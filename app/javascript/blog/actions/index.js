@@ -7,7 +7,9 @@ const ROOT_URL = '/api/v1/posts';
 export function createPost(body, callback) {
   const request = fetch(`${ROOT_URL}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   }).then(response => response.json())
     .then(callback);
