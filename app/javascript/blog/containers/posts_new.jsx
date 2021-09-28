@@ -5,7 +5,6 @@ import { createPost } from '../actions';
 
 class PostsNew extends Component {
   onSubmit = (values) => {
-    console.log('ok')
     this.props.createPost(values, (post) => {
       this.props.history.push('/'); // Navigate after submit
       return post;
