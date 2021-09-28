@@ -2,8 +2,10 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POST = 'FETCH_POST';
 export const POST_CREATED = 'POST_CREATED';
 
+const ROOT_URL = '/api/v1/posts';
+
 export function createPost(body, callback) {
-  const request = fetch("http://reduxblog.herokuapp.com/api/posts?key=WAGON-BLOG", {
+  const request = fetch(`${ROOT_URL}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
@@ -17,7 +19,7 @@ export function createPost(body, callback) {
 }
 
 export function fetchPost(id) {
-  const promise = fetch(`http://reduxblog.herokuapp.com/api/posts/${id}?key=WAGON-BLOG`)
+  const promise = fetch(`${ROOT_URL}/${id}`)
     .then(response => response.json());
 
   return {
@@ -28,7 +30,7 @@ export function fetchPost(id) {
 
 export function fetchPosts() {
   // AJAX request
-  const promise = fetch("http://reduxblog.herokuapp.com/api/posts?key=WAGON-BLOG")
+  const promise = fetch(`${ROOT_URL}`)
     .then(response => response.json());
 
   return {
@@ -36,4 +38,3 @@ export function fetchPosts() {
     payload: promise
   }
 }
-
